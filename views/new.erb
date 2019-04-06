@@ -3,9 +3,9 @@
 	<form action="/new" method="POST">
 
 		<div class="form-group">
-			<input name="author" class="form-control" type="text" placeholder="Type your name">
+			<input name="author" class="form-control" type="text" placeholder="Type your name" value="<%= @author %>">
 			<br />
-			<textarea name="content" class="form-control" rows="6" placeholder="Type post text here"></textarea>
+			<textarea name="content" class="form-control" rows="6" placeholder="Type post text here"><%= @content %></textarea>
 	  	</div>
 	  
 		<button type="submit" class="btn btn-primary">Submit</button>

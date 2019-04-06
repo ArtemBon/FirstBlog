@@ -46,8 +46,8 @@ get '/new' do
 end
 
 post '/new' do
-	content = params[:content]
-	author = params[:author]
+	@content = params[:content]
+	@author = params[:author]
 
 	errors = {
 		author: 'Type your name',
@@ -61,7 +61,7 @@ post '/new' do
 		end
 	end
 
-	@db.execute 'insert into Posts (content, created_date, author) values (?, datetime(), ?)', [content, author]
+	@db.execute 'insert into Posts (content, created_date, author) values (?, datetime(), ?)', [@content, @author]
 
 	redirect to '/'
 end
