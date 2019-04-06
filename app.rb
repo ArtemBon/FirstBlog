@@ -84,6 +84,18 @@ post '/details/:id' do
 	post_id = params[:id]
 	comment = params[:content]
 
+	if comment == ''
+
+		results = @db.execute 'select * from Posts where id = ?', [post_id]
+		@row = results[0]
+
+		@comments = @db.execute 'select * from Comments where post_id = ? order by id', [post_id]
+
+		@error = 'Type your comment'
+		return erb :details
+
+	end
+
 	@db.execute 'insert into Comments (
 		content,
 		created_date,
